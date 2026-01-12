@@ -11,6 +11,7 @@ output:
 
 
 ## Loading and preprocessing the data
+
 First, we load the required packages and dataset provided.
 
 
@@ -29,15 +30,18 @@ data <- read_csv("activity.csv")
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
-Converting Date variable into Date class.
+
+Converting date variable into Date class.
 
 
 ``` r
 data$date<-as.Date(data$date)
 ```
+
 ## What is mean total number of steps taken per day?
 
-Total number of steps per day
+Total number of steps per day. 
+
 For this part, missing values are ignored.
 
 
@@ -53,15 +57,16 @@ hist(steps_per_day$steps, main = "Histogram of Total Steps Per Day", xlab = "Tot
 col = "cyan")
 ```
 
-![](RCRPA1_Assessment1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-Mean and Median of Total Steps per Day
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+Mean and median of total steps per day
 
 
 ``` r
 mean_steps <- mean(steps_per_day$steps)
 median_steps <- median(steps_per_day$steps)
 ```
-avg_steps_interval$interval[which.max(avg_steps_interval$steps)]
+
 
 Result:
 
@@ -380,7 +385,9 @@ avg_steps_interval
 ## 287     2350   0.2264151
 ## 288     2355   1.0754717
 ```
-Time Series Plot
+
+Time Series Plot:
+
 
 
 ``` r
@@ -392,9 +399,10 @@ ylab = "Average Number of Steps",
 main = "Average Daily Activity Pattern")
 ```
 
-![](RCRPA1_Assessment1_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
-Interval with Maximum Average Steps
+
+Interval with Maximum Average Steps:
 
 
 ``` r
@@ -425,7 +433,7 @@ total_missing
 ## [1] 2304
 ```
 
-Histogram of imputation
+Imputation
 
 
 ``` r
@@ -455,7 +463,7 @@ col = "lightgreen",
 breaks = 20)
 ```
 
-![](RCRPA1_Assessment1_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 Mean and median after imputation
 
@@ -503,7 +511,7 @@ mean
 )
 ```
 
-Panel Plot
+Panel Plot:
 
 
 ``` r
@@ -518,6 +526,8 @@ ylab = "Average Number of Steps",
 main = "Activity Patterns: Weekdays vs Weekends")
 ```
 
-![](RCRPA1_Assessment1_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+
 Conclusion:
+
 Weekdays show higher activity during morning and early evening intervals, while weekends exhibit more evenly distributed activity throughout the day.

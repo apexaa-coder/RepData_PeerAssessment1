@@ -13,21 +13,26 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Loading and preprocessing the data
+
 First, we load the required packages and dataset provided.
 
 ```{r}
+
 library(readr)
 data <- read_csv("activity.csv")
 
 ```
-Converting Date variable into Date class.
+
+Converting date variable into Date class.
 
 ```{r}
 data$date<-as.Date(data$date)
 ```
+
 ## What is mean total number of steps taken per day?
 
-Total number of steps per day
+Total number of steps per day. 
+
 For this part, missing values are ignored.
 
 ```{r}
@@ -41,13 +46,14 @@ hist(steps_per_day$steps, main = "Histogram of Total Steps Per Day", xlab = "Tot
 col = "cyan")
 
 ```
-Mean and Median of Total Steps per Day
+
+Mean and median of total steps per day
 
 ```{r}
 mean_steps <- mean(steps_per_day$steps)
 median_steps <- median(steps_per_day$steps)
 ```
-avg_steps_interval$interval[which.max(avg_steps_interval$steps)]
+
 
 Result:
 ```{r}
@@ -61,7 +67,9 @@ Result:
 avg_steps_interval <- aggregate(steps ~ interval, data = data, mean, na.rm = TRUE)
 avg_steps_interval
 ```
-Time Series Plot
+
+Time Series Plot:
+
 
 ```{r}
 plot(avg_steps_interval$interval,
@@ -72,7 +80,8 @@ ylab = "Average Number of Steps",
 main = "Average Daily Activity Pattern")
 ```
 
-Interval with Maximum Average Steps
+
+Interval with Maximum Average Steps:
 
 ```{r}
 max_interval <- avg_steps_interval$interval[
@@ -94,7 +103,7 @@ total_missing
 
 ```
 
-Histogram of imputation
+Imputation
 
 ```{r}
 interval_means <- avg_steps_interval
@@ -155,7 +164,7 @@ mean
 )
 ```
 
-Panel Plot
+Panel Plot:
 
 ```{r}
 library(lattice)
@@ -169,5 +178,7 @@ ylab = "Average Number of Steps",
 main = "Activity Patterns: Weekdays vs Weekends")
 
 ```
+
 Conclusion:
+
 Weekdays show higher activity during morning and early evening intervals, while weekends exhibit more evenly distributed activity throughout the day.
